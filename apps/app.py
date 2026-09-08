@@ -44,11 +44,24 @@ class upload_app:
             ask_url = simpledialog.askstring("資料庫", "請輸入資料庫IP：", parent=self.root)
             if not is_valid_ip(ask_url):
                 messagebox.showerror("錯誤", "無法辨識的IP")
-                continue
+                self.root.destroy()
+                return
+            try:
+                check = requests.get(f"http://{ask_url}:80")
+                if check.status_code == 200:
+                    pass
+                else:
+                    messagebox.showerror("錯誤", "該主機無法連線！")
+                    self.root.destroy()
+                    return
+            except Exception as e:
+                messagebox.showerror(f"錯誤", "該主機無法連線！\n{e}")
+                self.root.destroy()
+                return
+
             self.url = "http://{}:80/upload".format(ask_url)
             break
 
-        print(self.url)
         self._setup_ui()
 
     def _setup_ui(self):
