@@ -22,6 +22,9 @@
 > [!NOTE]
 > 這個使用 Python Flask 讓電腦可以直接當作伺服器端處理 requests。
 
+> [!NOTE]
+> 請注意伺服器端以及用戶端預設架設在區域網。
+
 ### 伺服器端架設
 1. 下載好後在 `\server` 中找到 `server.py` 檔案
 2. 使用終端機，輸入 `python3 server.py` 或者使用打包後的伺服器檔案。
